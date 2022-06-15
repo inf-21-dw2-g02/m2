@@ -1,4 +1,4 @@
-# Car Dealership API with OAuth 2.0 / Momento de Avaliação 1
+# Car Dealership API with OAuth 2.0 using GUI / Momento de Avaliação 2
 
 Repositório criado no âmbito do projeto desenvolvido para a Unidade Curricular de 'Desenvolvimento Web II', uma cadeira de segundo ano na 'UMAIA', no curso de 'Informática'.<br>
 Desenvolvido pelo Grupo 2: André Cacheira ([@Cacheira14](https://github.com/Cacheira14)), Bruno Sousa ([@brunomfsrw1](https://github.com/brunomfsrw1)), Raul Gonçalves ([@RaulGoncalves21x](https://github.com/RaulGoncalves21x)).
@@ -11,6 +11,7 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 ## Organização do Repositório
 
 * **Código fonte API** presente na pasta [API](API).
+* **Código fonte ReactJS** presente na pasta [interface](interface).
 * **Documentação** presente na pasta [doc](doc/).
 * **[Documento MYSQL](database_v1.sql)** para criação da Base de Dados.
 * **[Documento Docker-compose](docker-compose.yaml)** para puxar as imagens dos repositórios DockerHub e montar a aplicação.
