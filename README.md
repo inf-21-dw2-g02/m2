@@ -37,6 +37,7 @@ Mais especificamente:
 
 * [Docker](https://docs.docker.com/get-started/overview/)
 * [NodeJS](https://nodejs.org/en/about/)
+* [ReactJS](https://reactjs.org/docs/getting-started.html)
 
 ## Relatório
 
