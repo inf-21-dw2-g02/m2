@@ -1,0 +1,8 @@
+FROM node:17
+WORKDIR /app
+COPY . .
+RUN npm i -g serve
+#RUN chown -R node /app
+EXPOSE 3006
+USER node
+CMD ["serve", "-s", "build", "-l", "3006"]

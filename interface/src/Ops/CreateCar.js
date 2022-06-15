@@ -3,10 +3,10 @@ const CreateCar = ({
     createEngineId, setCreateEngineId, createManufacturerId, setCreateManufacturerId, createOwnerId, setCreateOwnerId
 }) => {
   return (
-    <main className="NewPost">
+    <main>
       <h2>Create Car</h2>
       <form class="form-group" onSubmit={handleCreateCar}>
-        <label class="form-label">Nome:</label>
+        <label class="form-label">Name:</label>
         <input class="form-control" type="text" required value={createName} onChange={(e) => setCreateName(e.target.value)}/>
 
         <label class="form-label">Description:</label>	

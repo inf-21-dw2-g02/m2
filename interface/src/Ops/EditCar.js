@@ -8,9 +8,7 @@ const EditCar = ({
     editEngineId, setEditEngineId, editManufacturerId, setEditManufacturerId, editOwnerId, setEditOwnerId
 }) => {
     const { id } = useParams();
-    console.log(id);
     const car = cars.find(car => (car.id).toString() === id);
-    console.log(cars);
 
     useEffect(() => {
         if (car) {
@@ -25,7 +23,7 @@ const EditCar = ({
 
     return (
         <div>
-            {editColor && <>
+            {car && <>
                 <h2>Edit Car #{id}</h2>
                 <form class="form-group" onSubmit={(e) => e.preventDefault()}>
                     <label class="form-label">Name:</label>
@@ -49,7 +47,7 @@ const EditCar = ({
                     <button class="btn btn-primary" type="submit" onClick={() => handleEditCar(id)}>Submit</button>
                 </form>
             </>}
-            {!editColor && <>
+            {!car && <>
                 <p>Missing Car #{id}</p>
                 <p>Check other <Link to='/Cars'>Cars</Link>!</p>
             </>}

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const manufacturers = "http://localhost:3000/Manufacturers";
 const manufacturer = "http://localhost:3000/Manufacturer";
@@ -18,30 +19,6 @@ export default function Manufacturers() {
       });
     }, []);
   
-    function updateManufacturer(event) {
-      request
-        .put(`${manufacturer}/${event.currentTarget.dataset.index}`, {
-          name: "Hello World!",
-          horsepower: 100,
-          brand: "BMReee"
-        })
-        .then((response) => {
-          regs[regs.findIndex((el) => el.id === response.data.id)] =
-            response.data;
-          setPosts(regs);
-          setState({});
-        });
-    }
-  
-    function createManufacturer() {
-      request
-        .post(manufacturers, { name: "Hello World!", horsepower: 100, brand: "BMReee" })
-        .then((response) => {
-          setPosts(regs.concat(response.data));
-          setState({});
-        });
-    }
-  
     function deleteManufacturer(event) {
       const deletedId = event.currentTarget.dataset.index;
       request.delete(`${manufacturer}/${deletedId}`).then(() => {
@@ -57,7 +34,7 @@ export default function Manufacturers() {
     if (!regs) return null;
     return (
       <div>
-        <button style={{"margin-bottom": "20px"}} class="btn btn-success" onClick={createManufacturer}>Create Manufacturer</button>
+        <Link to={`/manufacturer/create`}><button style={{"margin-bottom": "20px"}} class="btn btn-success">Create Manufacturer</button></Link>
         <table style={{textAlign: "center"}} class="table table-striped table-dark" border="solid 1px">
           <thead>
             <tr>
@@ -76,9 +53,7 @@ export default function Manufacturers() {
                 <td>{reg.founded}</td>
                 <td>{reg.description}</td>
                 <td>
-                  <button class="btn btn-primary" data-index={reg.id} onClick={updateManufacturer}>
-                    Update
-                  </button>
+                  <Link to={`/manufacturer/${reg.id}`}><button class="btn btn-primary">Update</button></Link>
                 </td>
                 <td>
                   <button class="btn btn-danger" data-index={reg.id} onClick={deleteManufacturer}>

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const owners = "http://localhost:3000/Owners";
 const owner = "http://localhost:3000/Owner";
@@ -18,30 +19,6 @@ export default function Owners() {
       });
     }, []);
   
-    function updateOwner(event) {
-      request
-        .put(`${owner}/${event.currentTarget.dataset.index}`, {
-          name: "Hello World!",
-          horsepower: 100,
-          brand: "BMReee"
-        })
-        .then((response) => {
-          regs[regs.findIndex((el) => el.id === response.data.id)] =
-            response.data;
-          setPosts(regs);
-          setState({});
-        });
-    }
-  
-    function createOwner() {
-      request
-        .post(owners, { name: "Hello World!", horsepower: 100, brand: "BMReee" })
-        .then((response) => {
-          setPosts(regs.concat(response.data));
-          setState({});
-        });
-    }
-  
     function deleteOwner(event) {
       const deletedId = event.currentTarget.dataset.index;
       request.delete(`${owner}/${deletedId}`).then(() => {
@@ -57,7 +34,7 @@ export default function Owners() {
     if (!regs) return null;
     return (
       <div>
-        <button style={{"margin-bottom": "20px"}} class="btn btn-success"onClick={createOwner}>Create Owner</button>
+        <Link to={`/owner/create`}><button style={{"margin-bottom": "20px"}} class="btn btn-success">Create Owner</button></Link>
         <table style={{textAlign: "center"}} class="table table-striped table-dark" border="solid 1px">
           <thead>
             <tr>
@@ -76,9 +53,7 @@ export default function Owners() {
                 <td>{reg.age}</td>
                 <td>{reg.sex}</td>
                 <td>
-                  <button class="btn btn-primary" data-index={reg.id} onClick={updateOwner}>
-                    Update
-                  </button>
+                  <Link to={`/owner/${reg.id}`}><button class="btn btn-primary">Update</button></Link>
                 </td>
                 <td>
                   <button class="btn btn-danger" data-index={reg.id} onClick={deleteOwner}>

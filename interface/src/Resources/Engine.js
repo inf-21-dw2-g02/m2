@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const engines = "http://localhost:3000/Engines";
 const engine = "http://localhost:3000/Engine";
@@ -18,30 +19,6 @@ export default function Engines() {
       });
     }, []);
   
-    function updateEngine(event) {
-      request
-        .put(`${engine}/${event.currentTarget.dataset.index}`, {
-          name: "Hello World!",
-          horsepower: 100,
-          brand: "BMReee"
-        })
-        .then((response) => {
-          regs[regs.findIndex((el) => el.id === response.data.id)] =
-            response.data;
-          setPosts(regs);
-          setState({});
-        });
-    }
-  
-    function createEngine() {
-      request
-        .post(engines, { name: "Hello World!", horsepower: 100, brand: "BMReee" })
-        .then((response) => {
-          setPosts(regs.concat(response.data));
-          setState({});
-        });
-    }
-  
     function deleteEngine(event) {
       const deletedId = event.currentTarget.dataset.index;
       request.delete(`${engine}/${deletedId}`).then(() => {
@@ -57,7 +34,7 @@ export default function Engines() {
     if (!regs) return null;
     return (
       <div>
-        <button style={{"margin-bottom": "20px"}} class="btn btn-success" onClick={createEngine}>Create Engine</button>
+        <Link to={`/engine/create`}><button style={{"margin-bottom": "20px"}} class="btn btn-success">Create Engine</button></Link>
         <table style={{textAlign: "center"}} class="table table-striped table-dark" border="solid 1px">
           <thead>
             <tr>
@@ -76,9 +53,7 @@ export default function Engines() {
                 <td>{reg.horsepower}</td>
                 <td>{reg.brand}</td>
                 <td>
-                  <button class="btn btn-primary" data-index={reg.id} onClick={updateEngine}>
-                    Update
-                  </button>
+                  <Link to={`/engine/${reg.id}`}><button class="btn btn-primary">Update</button></Link>
                 </td>
                 <td>
                   <button class="btn btn-danger" data-index={reg.id} onClick={deleteEngine}>
