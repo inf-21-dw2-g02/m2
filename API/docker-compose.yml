@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  mysql:
+    container_name: dealership-mysql
+    image: dealership-mysql
+    build:
+      context: .
+      dockerfile: ./dockerfile.mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      # schema?
+    networks:
+      - dealership-network
+    ports:
+      - 3306:3306
+  app:
+    depends_on:
+      - mysql
+    container_name: dealership-app
+    image: dealership-app
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    networks:
+      - dealership-network
+
+networks:
+  dealership-network:

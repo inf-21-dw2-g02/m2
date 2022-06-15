@@ -1,0 +1,32 @@
+{
+  "name": "Web Development - API using OAuth2",
+  "version": "1.0.0",
+  "description": "oauth2 tutorial",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "oauth2",
+    "authorization",
+    "authetication",
+    "example",
+    "UMAIA"
+  ],
+  "author": "Group 02",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2",
+    "passport-github2": "^0.1.12",
+    "path": "^0.12.7",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.3.0"
+  }
+}
