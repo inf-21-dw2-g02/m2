@@ -18,15 +18,6 @@ export default function Cars() {
       });
     }, []);
   
-    function createCar() {
-      request
-        .post(cars, { name: "Hello World!", horsepower: 100, brand: "BMReee" })
-        .then((response) => {
-          setPosts(regs.concat(response.data));
-          setState({});
-        });
-    }
-  
     function deleteCar(event) {
       const deletedId = event.currentTarget.dataset.index;
       request.delete(`${car}/${deletedId}`).then(() => {
@@ -42,7 +33,7 @@ export default function Cars() {
     if (!regs) return null;
     return (
       <div>
-        <button style={{"margin-bottom": "20px"}} class="btn btn-success" onClick={createCar}>Create Car</button>
+        <Link to={`/car/create`}><button style={{"margin-bottom": "20px"}} class="btn btn-success">Create Car</button></Link>
         <table style={{textAlign: "center"}} class="table table-striped table-dark" border="solid 1px">
           <thead>
             <tr>

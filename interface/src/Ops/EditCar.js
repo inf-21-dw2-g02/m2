@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const EditCar = ({
-    cars, handleEdit, editName, setEditName, editDescription, setEditDescription, editColor, setEditColor, 
+    cars, handleEditCar, editName, setEditName, editDescription, setEditDescription, editColor, setEditColor, 
     editEngineId, setEditEngineId, editManufacturerId, setEditManufacturerId, editOwnerId, setEditOwnerId
 }) => {
     const { id } = useParams();
@@ -25,7 +25,7 @@ const EditCar = ({
 
     return (
         <div>
-            {editName && <>
+            {editColor && <>
                 <h2>Edit Car #{id}</h2>
                 <form class="form-group" onSubmit={(e) => e.preventDefault()}>
                     <label class="form-label">Name:</label>
@@ -46,10 +46,10 @@ const EditCar = ({
                     <label class="form-label">Owner:</label>
                     <input class="form-control" type="number" required value={editOwnerId} onChange={(e) => setEditOwnerId(e.target.value)} />
                     <br/>
-                    <button class="btn btn-primary" type="submit" onClick={() => handleEdit(id)}>Submit</button>
+                    <button class="btn btn-primary" type="submit" onClick={() => handleEditCar(id)}>Submit</button>
                 </form>
             </>}
-            {!editName && <>
+            {!editColor && <>
                 <p>Missing Car #{id}</p>
                 <p>Check other <Link to='/Cars'>Cars</Link>!</p>
             </>}
