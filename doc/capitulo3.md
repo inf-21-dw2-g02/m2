@@ -18,13 +18,19 @@ Para efetuar a instalação e compilação deste projeto, estão abaixo apresent
 * Passo 2: Abrir a linha de comandos (CLI);
 * Passo 3: Entrar no diretório onde se encontra o ficheiro importado anteriormente;
 * Passo 4: Executar o seguinte comando **'docker-compose up'**;
-* Passo 5: Abrir o Browser no URL **'http://localhost:3000'**.
+* Passo 5: Abrir o Browser no URL **'http://localhost:3000'** para aceder diretamente à API ou no URL **'http://localhost:3006'** para utilizar a Interface React.
 
 ## 3.3 Instruções de Utilização
+
+### 3.3.1 API
 
 O ecrã inicial remete o utilizador para a possibilidade de efetuar login ou visualizar a documentação da API. Caso o utilizador não se autentique, poderá apenas efetuar os pedidos GET disponibilizados pela API. Em contrapartida, depois de autenticado, poderá efetuar qualquer um dos pedidos documentados.
 Depois de efetuar Login, o utilizador poderá verificar as informações da conta GitHub utilizada.
 Na documentação estarão definidos os schemas utilizados para cada recurso bem como exemplos da sua utilização em cada um dos tipos de pedidos, pelo que essa formulação deverá ser seguida de forma a criar pedidos válidos.
+
+### 3.3.2 Interface React
+
+Para corretamente utilizar esta interface, será necessário que o utilizador prima o botão "Sign in with GitHub" de forma a ter acesso a todas as operações para todos os recursos. A partir daí, o utilizador pode selecionar, numa navbar, cada um dos recursos. Desta forma, para além de um botão para criar um novo registo desse tipo, serão apresentadas todas as instâncias do recurso selecionado, bem como opções para os eliminar e editar. O botão de eliminação eliminará a instância da lista, enquanto o botão de criar mostrará um formulário onde dados para cada campo dos recursos podem ser inseridos. O processo de edição é muito semelhante, tendo como única diferença o facto de desta forma não ser criado nenhum registo novo, mas sim existir um "overwrite" dos dados daquela instância.
 
 ## 3.4 Detalhes de Implementação
 
@@ -36,6 +42,7 @@ Efetuado o desenvolvimento referido no ponto 3.1, foi necessário adaptar a API 
 * **['docker-compose.yml'](../API/docker-compose.yml)** - Ficheiro docker-compose que, durante o desenvolvimento, permitiu aos dois containers serem lançados em paralelo e estabelecerem uma ligação entre si;
 * **['docker-compose.yaml'](../docker-compose.yaml)** - Ficheiro docker-compose responsável por, numa versão final, facilitar a obtenção dos dois containers, gerando também uma ligação entre os mesmos.
 
+Adicionalmente, é de notar que o serviço ReactJS está atualmente a funcionar em ambiente de produção.
 <br>
 
 | [<<](capitulo1.md) | [<](capitulo2.md) | [1](capitulo1.md) | [2](capitulo2.md) | [3](capitulo3.md) |
