@@ -3,7 +3,7 @@ version: '3.7'
 services:
   mysql:
     container_name: dealership-mysql
-    image: inf21dw2g02/rep1:dealership-mysql
+    image: inf21dw2g02/rep3:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -17,11 +17,22 @@ services:
     depends_on:
       - mysql
     container_name: dealership-app
-    image: inf21dw2g02/rep2:dealership-app
+    image: inf21dw2g02/rep4:latest
     environment:
       NODE_ENV: production
     ports:
       - 3000:3000
+    networks:
+      - dealership-network
+  react:
+    depends_on:
+      - app
+    container_name: dealership-react
+    image: inf21dw2g02/rep5:latest
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3006:3006
     networks:
       - dealership-network
 
